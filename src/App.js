@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import PathfindingVisualizer from "./PathfindingVisualizer/PathfindingVisualizer";
 
 function App() {
+  const [showDropdown, setShowDropdown] = useState(null);
+
+  const handleHeaderClick = () => {
+    window.location.reload();
+  };
+
+  const handleDropdownClick = (dropdownName) => {
+    setShowDropdown((prevDropdown) =>
+      prevDropdown === dropdownName ? null : dropdownName
+    );
+  };
+
+  useEffect(() => {
+    const closeDropdown = (event) => {
+      if (!event.target.closest(".sec-center")) {
+        setShowDropdown(null);
+      }
+    };
+
+    document.addEventListener("click", closeDropdown);
+
+    return () => document.removeEventListener("click", closeDropdown);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="header-line">
+        <p
+          id="header-text"
+          className="hoverable-text"
+          onClick={handleHeaderClick}
         >
-          Learn React
-        </a>
-      </header>
+          Pathfinding Visualizer
+        </p>
+      </div>
+      <PathfindingVisualizer></PathfindingVisualizer>
     </div>
   );
 }

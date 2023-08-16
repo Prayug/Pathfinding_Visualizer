@@ -1,0 +1,50 @@
+.grid {
+  margin-top: 82px;
+  margin-left: 200px;
+}
+
+.button {
+  position: absolute;
+  height: 60px;
+  width: 150px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin-left: -17px;
+  font-size: 18px;
+  border: 5px;
+  color: white;
+  background-color: rgb(89, 185, 157);
+}
+
+#dijkstra-button {
+  top: 150px;
+  left: 50px;
+}
+
+#clear-button {
+  top: 7px;
+  left: calc(50%);
+  height: 40px;
+  width: 130px;
+}
+
+#astar-button {
+  top: 250px;
+  left: 50px;
+}
+
+#simple-maze{
+  top: 7px;
+  left: calc(25%);
+  height: 40px;
+  width: 130px;
+}
+
+#recursive-maze{
+  top: 7px;
+  left: calc(37.5%);
+  height: 40px;
+  width: 130px;
+}
+
