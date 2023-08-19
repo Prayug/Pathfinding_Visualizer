@@ -22,9 +22,21 @@
   left: 50px;
 }
 
+#bfs-button{
+  top: 350px;
+  left: 50px;
+}
+
 #clear-button {
   top: 7px;
   left: calc(50%);
+  height: 40px;
+  width: 130px;
+}
+
+#clearPath-button {
+  top: 7px;
+  left: calc(62.5%);
   height: 40px;
   width: 130px;
 }
@@ -62,12 +74,13 @@ ul {
   left: calc(62.5%);
   height: 40px;
   width: 130px;
+  font-size: 16px;
 }
 
 #speed {
   position: absolute;
   top: 0px;
-  left: calc(62.5%);
+  left: calc(75%);
 }
 
 .dropdown {
@@ -93,7 +106,7 @@ ul {
   padding: 5px;
   cursor: pointer;
   transition: 0.2s;
-  font-weight: bold;
+  font-weight: 550;
 }
 
 /* Change background color of items on hover */
@@ -107,4 +120,9 @@ ul {
 /* Show the list when hovering over the button */
 .dropdown:hover .dropdown-list {
   display: block;
+}
+
+.stopwatch {
+  position: absolute;
+  font-size: large;
 }
