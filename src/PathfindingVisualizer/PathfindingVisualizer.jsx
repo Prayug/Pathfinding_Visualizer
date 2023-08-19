@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import Node from "./Node/Node";
-import { dijkstra, getNodesInShortestPathOrder } from "../algorithms/dijkstra";
+import {
+  dijkstra,
+  getNodesInShortestPathOrder,
+  getNodesInShortestPathOrderBiDirectional,
+} from "../algorithms/dijkstra";
 import { astar } from "../algorithms/astar";
 import { BFS } from "../algorithms/bfs";
+import {
+  biDirectional,
+  INTERSECT_NODE_COL,
+  INTERSECT_NODE_ROW,
+} from "../algorithms/biDirectional";
 import { recursiveDivision } from "../Mazes/RecursiveDivision";
 import { simpleMaze } from "../Mazes/SimpleMaze";
 
@@ -219,12 +228,209 @@ export default class PathfindingVisualizer extends Component {
     if (algorithm === 2) {
       visitedNodesInOrder = BFS(grid, startNode, finishNode);
     }
+    if (algorithm === 3) {
+      visitedNodesInOrder = biDirectional(grid, startNode, finishNode);
+      nodesInShortestPathOrder = this.biDirectionalHelper(
+        grid,
+        visitedNodesInOrder
+      );
+    }
 
-    nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    if(algorithm !== 3) {
+      nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    }
 
     if (visitedNodesInOrder !== false) {
-      this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
+      if (algorithm === 3) {
+          this.animateAlgorithm(
+              visitedNodesInOrder,
+              nodesInShortestPathOrder
+          );
+      } else {
+          this.animateAlgorithm(
+              visitedNodesInOrder,
+              nodesInShortestPathOrder
+          );
+      }
+  }
+  }
+
+  biDirectionalHelper(grid, visitedNodesInOrder) {
+    var nodesInShortestPathOrder = [];
+    if (
+      typeof INTERSECT_NODE_COL !== "undefined" &&
+      typeof INTERSECT_NODE_ROW !== "undefined" &&
+      INTERSECT_NODE_ROW !== -1 &&
+      INTERSECT_NODE_COL !== -1
+    ) {
+      const intersectNode = grid[INTERSECT_NODE_ROW][INTERSECT_NODE_COL];
+      //get first branch from intersection Node
+      const nodesInShortestPathOrder1 =
+        getNodesInShortestPathOrder(intersectNode);
+      //find second branch from one of 4 nodes beside intersection node
+      const nodesInShortestPathOrder2 = this.findSecondBranch(
+        grid,
+        nodesInShortestPathOrder1,
+        visitedNodesInOrder
+      );
+      //combine first and second branch to form shortest path
+      const nodesInShortestPathOrderCombined = nodesInShortestPathOrder1.concat(
+        nodesInShortestPathOrder2
+      );
+      //console.log(nodesInShortestPathOrder);
+      nodesInShortestPathOrder = nodesInShortestPathOrderCombined;
     }
+    return nodesInShortestPathOrder;
+  }
+
+  findSecondBranch(grid, firstBranch, visitedNodesInOrder) {
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+
+    let rightBesideIntersectNode = null;
+    let rightWithinBounds = true;
+    if (INTERSECT_NODE_COL + 1 >= GRID_LENGTH) rightWithinBounds = false;
+    else
+      rightBesideIntersectNode =
+        grid[INTERSECT_NODE_ROW][INTERSECT_NODE_COL + 1];
+
+    let belowBesideIntersectNode = null;
+    let belowWithinBounds = true;
+    if (INTERSECT_NODE_ROW + 1 >= GRID_HEIGHT) belowWithinBounds = false;
+    else
+      belowBesideIntersectNode =
+        grid[INTERSECT_NODE_ROW + 1][INTERSECT_NODE_COL];
+
+    let leftBesideIntersectNode = null;
+    let leftWithinBounds = true;
+    if (INTERSECT_NODE_COL - 1 < 0) leftWithinBounds = false;
+    else
+      leftBesideIntersectNode =
+        grid[INTERSECT_NODE_ROW][INTERSECT_NODE_COL - 1];
+
+    let aboveBesideIntersectNode = null;
+    let aboveWithinBounds = true;
+    if (INTERSECT_NODE_ROW - 1 < 0) aboveWithinBounds = false;
+    else
+      aboveBesideIntersectNode =
+        grid[INTERSECT_NODE_ROW - 1][INTERSECT_NODE_COL];
+
+    let nodesInShortestPathOrderTestRight = [];
+
+    if (rightWithinBounds) {
+      nodesInShortestPathOrderTestRight =
+        getNodesInShortestPathOrderBiDirectional(
+          rightBesideIntersectNode,
+          visitedNodesInOrder
+        );
+    }
+    let nodesInShortestPathOrderTestBelow = [];
+    if (belowWithinBounds) {
+      nodesInShortestPathOrderTestBelow =
+        getNodesInShortestPathOrderBiDirectional(
+          belowBesideIntersectNode,
+          visitedNodesInOrder
+        );
+    }
+    let nodesInShortestPathOrderTestLeft = [];
+    if (leftWithinBounds) {
+      nodesInShortestPathOrderTestLeft =
+        getNodesInShortestPathOrderBiDirectional(
+          leftBesideIntersectNode,
+          visitedNodesInOrder
+        );
+    }
+    let nodesInShortestPathOrderTestAbove = [];
+    if (aboveWithinBounds) {
+      nodesInShortestPathOrderTestAbove =
+        getNodesInShortestPathOrderBiDirectional(
+          aboveBesideIntersectNode,
+          visitedNodesInOrder
+        );
+    }
+
+    if (this.arrayContainsGivenNode(firstBranch, startNode)) {
+      //first branch leads to startNode
+      //we check all test branches, to see if they lead to finish Node. if they do, return it
+      if (
+        rightWithinBounds &&
+        this.arrayContainsGivenNode(
+          nodesInShortestPathOrderTestRight,
+          finishNode
+        )
+      )
+        return nodesInShortestPathOrderTestRight;
+
+      if (
+        belowWithinBounds &&
+        this.arrayContainsGivenNode(
+          nodesInShortestPathOrderTestBelow,
+          finishNode
+        )
+      )
+        return nodesInShortestPathOrderTestBelow;
+
+      if (
+        leftWithinBounds &&
+        this.arrayContainsGivenNode(
+          nodesInShortestPathOrderTestLeft,
+          finishNode
+        )
+      )
+        return nodesInShortestPathOrderTestLeft;
+
+      if (
+        aboveWithinBounds &&
+        this.arrayContainsGivenNode(
+          nodesInShortestPathOrderTestAbove,
+          finishNode
+        )
+      )
+        return nodesInShortestPathOrderTestAbove;
+    } else {
+      //first branch leads to finishNode
+      // we check all test branches, to see if they lead to start node. if they do, return it
+      if (
+        this.arrayContainsGivenNode(
+          rightWithinBounds && nodesInShortestPathOrderTestRight,
+          startNode
+        )
+      )
+        return nodesInShortestPathOrderTestRight;
+
+      if (
+        this.arrayContainsGivenNode(
+          belowWithinBounds && nodesInShortestPathOrderTestBelow,
+          startNode
+        )
+      )
+        return nodesInShortestPathOrderTestBelow;
+
+      if (
+        leftWithinBounds &&
+        this.arrayContainsGivenNode(nodesInShortestPathOrderTestLeft, startNode)
+      )
+        return nodesInShortestPathOrderTestLeft;
+
+      if (
+        aboveWithinBounds &&
+        this.arrayContainsGivenNode(
+          nodesInShortestPathOrderTestAbove,
+          startNode
+        )
+      )
+        return nodesInShortestPathOrderTestAbove;
+    }
+  }
+
+  arrayContainsGivenNode(array, node) {
+    if (array === []) return false;
+    for (let element of array) {
+      if (element.row === node.row && element.col === node.col) {
+        return true;
+      }
+    }
+    return false;
   }
 
   render() {
@@ -254,6 +460,13 @@ export default class PathfindingVisualizer extends Component {
           onClick={() => this.visualizeAlgorithm(2)}
         >
           Breadth First
+        </button>
+        <button
+          id="BiD-button"
+          className="button"
+          onClick={() => this.visualizeAlgorithm(3)}
+        >
+          Bi Directional
         </button>
         <button
           id="clear-button"
@@ -310,11 +523,9 @@ export default class PathfindingVisualizer extends Component {
         </div>
 
         {/* {algorithmStartTime !== null && algorithmEndTime !== null && ( */}
-          <div className="stopwatch">
-            Algorithm running: {(algorithmEndTime - algorithmStartTime) / 1000}{" "}
-            seconds
-          </div>
-        
+        <div className="stopwatch">
+          {(algorithmEndTime - algorithmStartTime) / 1000} seconds
+        </div>
 
         <div className="grid">
           {grid.map((row, rowIdx) => {

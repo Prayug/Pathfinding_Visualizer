@@ -22,8 +22,13 @@
   left: 50px;
 }
 
-#bfs-button{
+#bfs-button {
   top: 350px;
+  left: 50px;
+}
+
+#BiD-button {
+  top: 450px;
   left: 50px;
 }
 
@@ -114,7 +119,7 @@ ul {
   border-radius: 8px;
   background-color: rgb(89, 185, 157);
   color: white;
-  cursor: p
+  cursor: p;
 }
 
 /* Show the list when hovering over the button */
@@ -124,5 +129,10 @@ ul {
 
 .stopwatch {
   position: absolute;
-  font-size: large;
+  font-size: 18px;
+  background-color: rgb(194, 194, 194);
+  padding: 12px;
+  left: calc(50% - 15px);
+  top: 70px;
+  border-radius: 15px;
 }

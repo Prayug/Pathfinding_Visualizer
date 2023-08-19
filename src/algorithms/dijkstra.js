@@ -46,9 +46,33 @@ function getAllNodes(grid) {
   return nodes;
 }
 
+function arrayContainsGivenNode(array, node) {
+  if (array === []) return false;
+  for (let element of array) {
+    if (element.row === node.row && element.col === node.col) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function getNodesInShortestPathOrder(finishNode) {
   const nodesInShortestPathOrder = [];
   let currentNode = finishNode;
+  while (currentNode !== null) {
+    nodesInShortestPathOrder.unshift(currentNode);
+    currentNode = currentNode.previousNode;
+  }
+  return nodesInShortestPathOrder;
+}
+
+export function getNodesInShortestPathOrderBiDirectional(
+  node,
+  visitedNodesInOrder
+) {
+  if (!arrayContainsGivenNode(visitedNodesInOrder, node)) return [];
+  const nodesInShortestPathOrder = [];
+  let currentNode = node;
   while (currentNode !== null) {
     nodesInShortestPathOrder.unshift(currentNode);
     currentNode = currentNode.previousNode;
