@@ -34,17 +34,77 @@
   left: 50px;
 }
 
-#simple-maze{
+#simple-maze {
   top: 7px;
   left: calc(25%);
   height: 40px;
   width: 130px;
 }
 
-#recursive-maze{
+#recursive-maze {
   top: 7px;
   left: calc(37.5%);
   height: 40px;
   width: 130px;
 }
 
+/* Reset default list styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Basic dropdown container */
+#speedDropdown {
+  position: absolute;
+  display: inline-block;
+  top: 7px;
+  left: calc(62.5%);
+  height: 40px;
+  width: 130px;
+}
+
+#speed {
+  position: absolute;
+  top: 0px;
+  left: calc(62.5%);
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+/* Dropdown list styling */
+.dropdown-list {
+  position: absolute;
+  top: 31px;
+  left: -17.5px;
+
+  width: 130px;
+  background-color: rgb(206, 206, 206);
+  border: 1px #ccc;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+/* Change background color of items on hover */
+.dropdown-item:hover {
+  border-radius: 8px;
+  background-color: rgb(89, 185, 157);
+  color: white;
+  cursor: p
+}
+
+/* Show the list when hovering over the button */
+.dropdown:hover .dropdown-list {
+  display: block;
+}

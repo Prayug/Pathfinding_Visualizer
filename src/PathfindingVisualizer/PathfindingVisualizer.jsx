@@ -21,7 +21,7 @@ let clickedIsFinish = false;
 var mouseIsPressed = false;
 var isRunning = false;
 
-let mazeCreationSpeed = 1;
+let mazeCreationSpeed = 10;
 
 export default class PathfindingVisualizer extends Component {
   constructor() {
@@ -162,21 +162,21 @@ export default class PathfindingVisualizer extends Component {
   }
 
   // visualizeDijkstra() {
-  //   const { grid } = this.state;
-  //   let startNode = grid[START_NODE_ROW][START_NODE_COL];
-  //   const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-  //   const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-  //   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-  //   this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+  // const { grid } = this.state;
+  // let startNode = grid[START_NODE_ROW][START_NODE_COL];
+  // const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+  // const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+  // const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+  // this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   // }
 
   // visualizeAstar() {
-  //   const { grid } = this.state;
-  //   const startNode = grid[START_NODE_ROW][START_NODE_COL];
-  //   const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-  //   const visitedNodesInOrder = astar(grid, startNode, finishNode);
-  //   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-  //   this.animateAstar(visitedNodesInOrder, nodesInShortestPathOrder);
+  // const { grid } = this.state;
+  // const startNode = grid[START_NODE_ROW][START_NODE_COL];
+  // const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+  // const visitedNodesInOrder = astar(grid, startNode, finishNode);
+  // const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+  // this.animateAstar(visitedNodesInOrder, nodesInShortestPathOrder);
   // }
 
   animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder) {
@@ -259,16 +259,19 @@ export default class PathfindingVisualizer extends Component {
           Recursive
         </button>
 
-        <div className="button">
-          <select>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-            <option>Option 5</option>
-          </select>
+        <div class="dropdown" id="speed" onClick={() => this.clearGrid()}>
+          <button class="button" id="speedDropdown">
+            {" "}
+            Speed
+          </button>
+          <ul class="dropdown-list">
+            <li class="dropdown-item" onClick={() => this.setMazeSpeed(0)}>Instant</li>
+            <li class="dropdown-item" onClick={() => this.setMazeSpeed(5)}>Fast</li>
+            <li class="dropdown-item" onClick={() => this.setMazeSpeed(10)}>Normal</li>
+            <li class="dropdown-item" onClick={() => this.setMazeSpeed(15)}>Slow</li>
+            <li class="dropdown-item" onClick={() => this.setMazeSpeed(25)}>Slower</li>
+          </ul>
         </div>
-
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
@@ -302,6 +305,10 @@ export default class PathfindingVisualizer extends Component {
         </div>
       </>
     );
+  }
+
+  setMazeSpeed(speed){
+    mazeCreationSpeed = speed;
   }
 
   clearGrid() {
@@ -360,7 +367,7 @@ export default class PathfindingVisualizer extends Component {
           isRunning = false;
           this.setState({ grid: grid });
         }
-      }, 10 * i);
+      }, mazeCreationSpeed * i);
     }
   }
 }

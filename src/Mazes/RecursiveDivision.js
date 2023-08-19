@@ -1,6 +1,5 @@
 var nodesToBeWalls = [];
 var typeOfMaze = "";
-var mazeSpeed;
 
 export function recursiveDivision(
   grid,
@@ -9,14 +8,14 @@ export function recursiveDivision(
   colStart,
   colEnd,
   order,
-  type,
-  mazeCreationSpeed
+  type
 ) {
+  const timeStart = performance.now();
   nodesToBeWalls = [];
   typeOfMaze = type;
-  mazeSpeed = mazeCreationSpeed;
 
   recursiveDivisionMaze(grid, rowStart, rowEnd, colStart, colEnd, order);
+  
   return nodesToBeWalls;
 }
 
@@ -28,14 +27,6 @@ export function recursiveDivisionMaze(
   colEnd,
   order
 ) {
-  if(mazeSpeed === "normal");
-  if(mazeSpeed === "fast"){
-
-  }
-  if(mazeSpeed === "slow"){
-    setTimeout(() => {},50*nodesToBeWalls.length+300*(colEnd-colStart));
-  }
-
   if (rowEnd < rowStart || colEnd < colStart) return;
 
   if (order === "HORIZONTAL") {
