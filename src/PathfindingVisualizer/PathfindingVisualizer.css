@@ -32,6 +32,11 @@
   left: 50px;
 }
 
+#algoSpeedDropdown {
+  top: 550px;
+  left: 50px;
+}
+
 #clear-button {
   top: 7px;
   left: calc(50%);
@@ -93,10 +98,12 @@ ul {
   display: inline-block;
 }
 
-/* Dropdown list styling */
-.dropdown-list {
+.algoDropdown {
+}
+
+.algoDropdown-list {
   position: absolute;
-  top: 31px;
+  top: 100px;
   left: -17.5px;
 
   width: 130px;
@@ -104,6 +111,38 @@ ul {
   border: 1px #ccc;
   border-radius: 8px;
   display: none;
+}
+
+.algoDropdown-item {
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 550;
+}
+
+/* Change background color of items on hover */
+.algoDropdown-item:hover {
+  border-radius: 8px;
+  background-color: rgb(89, 185, 157);
+  color: white;
+  cursor: p;
+}
+
+/* Show the list when hovering over the button */
+.algoDropdown:hover .dropdown-list {
+  display: block;
+}
+
+/* Dropdown list styling */
+.dropdown-list {
+  position: absolute;
+
+  width: 130px;
+  background-color: rgb(206, 206, 206);
+  border: 1px #ccc;
+  border-radius: 8px;
+  display: none;
+  top: 534px;
+  left: 182px;
 }
 
 /* Dropdown item styling */

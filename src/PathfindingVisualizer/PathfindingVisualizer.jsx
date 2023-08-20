@@ -32,6 +32,7 @@ var isRunning = false;
 var stopWatchOn = false;
 
 let mazeCreationSpeed = 10;
+let algorithmSpeed = 10;
 
 export default class PathfindingVisualizer extends Component {
   constructor() {
@@ -207,7 +208,7 @@ export default class PathfindingVisualizer extends Component {
             this.animateShortestPath(nodesInShortestPathOrder);
           }, 10 * nodesInShortestPathOrder.length);
         }
-      }, 10 * i);
+      }, algorithmSpeed * i);
     }
   }
 
@@ -236,23 +237,17 @@ export default class PathfindingVisualizer extends Component {
       );
     }
 
-    if(algorithm !== 3) {
+    if (algorithm !== 3) {
       nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     }
 
     if (visitedNodesInOrder !== false) {
       if (algorithm === 3) {
-          this.animateAlgorithm(
-              visitedNodesInOrder,
-              nodesInShortestPathOrder
-          );
+        this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
       } else {
-          this.animateAlgorithm(
-              visitedNodesInOrder,
-              nodesInShortestPathOrder
-          );
+        this.animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
       }
-  }
+    }
   }
 
   biDirectionalHelper(grid, visitedNodesInOrder) {
@@ -498,7 +493,31 @@ export default class PathfindingVisualizer extends Component {
           Recursive
         </button>
 
-        <div class="dropdown" id="speed" onClick={() => this.clearGrid()}>
+        <div class="algoDropdown">
+          <button class="button" id="algoSpeedDropdown">
+            {" "}
+            Algorithm Speed
+          </button>
+          <ul class="dropdown-list">
+            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(0)}>
+              Instant
+            </li>
+            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(5)}>
+              Fast
+            </li>
+            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(10)}>
+              Normal
+            </li>
+            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(15)}>
+              Slow
+            </li>
+            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(25)}>
+              Slower
+            </li>
+          </ul>
+        </div>
+
+        <div class="dropdown" id="speed">
           <button class="button" id="speedDropdown">
             {" "}
             Generation Speed
@@ -566,6 +585,10 @@ export default class PathfindingVisualizer extends Component {
     mazeCreationSpeed = speed;
   }
 
+  setAlgoSpeed(speed) {
+    algorithmSpeed = speed;
+  }
+
   clearGrid() {
     if (isRunning) return;
     const newgrid = clearGridHelper();
@@ -599,8 +622,7 @@ export default class PathfindingVisualizer extends Component {
         1,
         GRID_LENGTH - 2,
         "HORIZONTAL",
-        "regularMaze",
-        mazeCreationSpeed
+        "regularMaze"
       );
     }
     if (turnNodesToWalls != null) {
