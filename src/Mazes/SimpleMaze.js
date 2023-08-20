@@ -18,7 +18,6 @@ export function simpleMaze(grid, startNode, finishNode){
     return turnNodesToWalls;
 }
 
-// Generates a random number between a minimum value and maximum value.
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

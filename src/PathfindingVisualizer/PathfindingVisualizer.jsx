@@ -82,13 +82,11 @@ export default class PathfindingVisualizer extends Component {
 
     var node = grid[row][col];
 
-    // allows the starting node to be positioned at any node on the grid
     if (node.isStart) {
       clickedIsStart = true;
       return;
     }
 
-    // allows the finish node to be positioned similar to the starting node
     if (node.isFinish) {
       clickedIsFinish = true;
       return;
@@ -169,7 +167,7 @@ export default class PathfindingVisualizer extends Component {
       stopwatchInterval: setInterval(() => {
         const currentTime = new Date().getTime();
         this.setState({ algorithmEndTime: currentTime });
-      }, 10), // Update the stopwatch display every 10 milliseconds
+      }, 10),
     });
   }
 
@@ -203,7 +201,7 @@ export default class PathfindingVisualizer extends Component {
           "node node-visited";
 
         if (i === visitedNodesInOrder.length - 1) {
-          this.stopStopwatch(); // Stop the stopwatch after all nodes are visited
+          this.stopStopwatch(); 
           setTimeout(() => {
             this.animateShortestPath(nodesInShortestPathOrder);
           }, 10 * nodesInShortestPathOrder.length);
@@ -259,20 +257,16 @@ export default class PathfindingVisualizer extends Component {
       INTERSECT_NODE_COL !== -1
     ) {
       const intersectNode = grid[INTERSECT_NODE_ROW][INTERSECT_NODE_COL];
-      //get first branch from intersection Node
       const nodesInShortestPathOrder1 =
         getNodesInShortestPathOrder(intersectNode);
-      //find second branch from one of 4 nodes beside intersection node
       const nodesInShortestPathOrder2 = this.findSecondBranch(
         grid,
         nodesInShortestPathOrder1,
         visitedNodesInOrder
       );
-      //combine first and second branch to form shortest path
       const nodesInShortestPathOrderCombined = nodesInShortestPathOrder1.concat(
         nodesInShortestPathOrder2
       );
-      //console.log(nodesInShortestPathOrder);
       nodesInShortestPathOrder = nodesInShortestPathOrderCombined;
     }
     return nodesInShortestPathOrder;
@@ -345,8 +339,6 @@ export default class PathfindingVisualizer extends Component {
     }
 
     if (this.arrayContainsGivenNode(firstBranch, startNode)) {
-      //first branch leads to startNode
-      //we check all test branches, to see if they lead to finish Node. if they do, return it
       if (
         rightWithinBounds &&
         this.arrayContainsGivenNode(
@@ -383,8 +375,6 @@ export default class PathfindingVisualizer extends Component {
       )
         return nodesInShortestPathOrderTestAbove;
     } else {
-      //first branch leads to finishNode
-      // we check all test branches, to see if they lead to start node. if they do, return it
       if (
         this.arrayContainsGivenNode(
           rightWithinBounds && nodesInShortestPathOrderTestRight,
@@ -541,7 +531,6 @@ export default class PathfindingVisualizer extends Component {
           </ul>
         </div>
 
-        {/* {algorithmStartTime !== null && algorithmEndTime !== null && ( */}
         <div className="stopwatch">
           {(algorithmEndTime - algorithmStartTime) / 1000} seconds
         </div>
@@ -567,7 +556,6 @@ export default class PathfindingVisualizer extends Component {
                         this.handleMouseEnter(row, col)
                       }
                       onMouseUp={() => this.handleMouseUp()}
-                      // Pass the clickedIsStart and clickedIsFinish as props
                       clickedIsStart={clickedIsStart}
                       clickedIsFinish={clickedIsFinish}
                     />

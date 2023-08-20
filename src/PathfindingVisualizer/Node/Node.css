@@ -25,7 +25,7 @@
 }
 
 .node-moving {
-  transition: all 0.2s ease-in-out; /* Add a CSS transition for smooth movement */
+  transition: all 0.2s ease-in-out;
 }
 
 @keyframes visitedAnimation {
