@@ -498,44 +498,44 @@ export default class PathfindingVisualizer extends Component {
             {" "}
             Algorithm Speed
           </button>
-          <ul class="dropdown-list">
-            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(0)}>
+          <ul class="algoDropdown-list">
+            <li class="algoDropdown-item" onClick={() => this.setAlgoSpeed(0)}>
               Instant
             </li>
-            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(5)}>
+            <li class="algoDropdown-item" onClick={() => this.setAlgoSpeed(5)}>
               Fast
             </li>
-            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(10)}>
+            <li class="algoDropdown-item" onClick={() => this.setAlgoSpeed(10)}>
               Normal
             </li>
-            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(15)}>
+            <li class="algoDropdown-item" onClick={() => this.setAlgoSpeed(15)}>
               Slow
             </li>
-            <li class="dropdown-item" onClick={() => this.setAlgoSpeed(25)}>
+            <li class="algoDropdown-item" onClick={() => this.setAlgoSpeed(25)}>
               Slower
             </li>
           </ul>
         </div>
 
-        <div class="dropdown" id="speed">
+        <div class="mazeDropdown">
           <button class="button" id="speedDropdown">
             {" "}
             Generation Speed
           </button>
-          <ul class="dropdown-list">
-            <li class="dropdown-item" onClick={() => this.setMazeSpeed(0)}>
+          <ul class="mazeDropdown-list">
+            <li class="mazeDropdown-item" onClick={() => this.setMazeSpeed(0)}>
               Instant
             </li>
-            <li class="dropdown-item" onClick={() => this.setMazeSpeed(5)}>
+            <li class="mazeDropdown-item" onClick={() => this.setMazeSpeed(5)}>
               Fast
             </li>
-            <li class="dropdown-item" onClick={() => this.setMazeSpeed(10)}>
+            <li class="mazeDropdown-item" onClick={() => this.setMazeSpeed(10)}>
               Normal
             </li>
-            <li class="dropdown-item" onClick={() => this.setMazeSpeed(15)}>
+            <li class="mazeDropdown-item" onClick={() => this.setMazeSpeed(15)}>
               Slow
             </li>
-            <li class="dropdown-item" onClick={() => this.setMazeSpeed(25)}>
+            <li class="mazeDropdown-item" onClick={() => this.setMazeSpeed(25)}>
               Slower
             </li>
           </ul>
