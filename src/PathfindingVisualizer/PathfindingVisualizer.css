@@ -109,6 +109,7 @@ ul {
   display: none;
   top: 534px;
   left: 182px;
+  z-index: 100;
 }
 
 .mazeDropdown-list {
@@ -121,6 +122,7 @@ ul {
   display: none;
   top: -9px;
   left: calc(82.8%);
+  z-index: 100;
 }
 
 .algoDropdown-item {

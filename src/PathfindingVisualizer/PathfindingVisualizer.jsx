@@ -184,7 +184,7 @@ export default class PathfindingVisualizer extends Component {
         const node = nodesInShortestPathOrder[i];
         document.getElementById(`node-${node.row}-${node.col}`).className =
           "node node-shortest-path";
-      }, 50 * i);
+      }, 5 * algorithmSpeed * i);
     }
   }
 
@@ -201,7 +201,7 @@ export default class PathfindingVisualizer extends Component {
           "node node-visited";
 
         if (i === visitedNodesInOrder.length - 1) {
-          this.stopStopwatch(); 
+          this.stopStopwatch();
           setTimeout(() => {
             this.animateShortestPath(nodesInShortestPathOrder);
           }, 10 * nodesInShortestPathOrder.length);

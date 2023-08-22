@@ -3,14 +3,19 @@
   height: 25px;
   outline: 1px solid rgb(175, 216, 248);
   display: inline-block;
+  z-index: -100;
+
 }
 
 .node-finish {
   background-color: red;
+  z-index: -100;
+
 }
 
 .node-start {
   background-color: green;
+  z-index: -100;
 }
 
 .node-visited {
@@ -22,10 +27,12 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
+  z-index: -100;
 }
 
 .node-moving {
   transition: all 0.2s ease-in-out;
+  z-index: -100;
 }
 
 @keyframes visitedAnimation {
