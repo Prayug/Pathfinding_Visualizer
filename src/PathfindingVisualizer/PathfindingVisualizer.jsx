@@ -46,6 +46,19 @@ export default class PathfindingVisualizer extends Component {
     };
   }
 
+  callHelpScreen(screen) {
+    switch (screen) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+    }
+  }
+
   componentDidMount() {
     const grid = getInitialGrid();
     this.setState({ grid });
@@ -424,6 +437,24 @@ export default class PathfindingVisualizer extends Component {
 
     return (
       <>
+        <h1>Css Modal</h1>
+        <a href="#popUp" id="openPopUp">
+          Open it!
+        </a>
+
+        <aside id="popUp" class="popup">
+          <div class="popUpContainer">
+            <header>
+              <a href="#!" class="closePopUp">
+                X
+              </a>
+              <h2>Nicee!</h2>
+            </header>
+            <article></article>
+          </div>
+          <a href="#!" class="closePopUpOutSide"></a>
+        </aside>
+
         <button
           id="dijkstra-button"
           className="button"
@@ -509,8 +540,29 @@ export default class PathfindingVisualizer extends Component {
 
         <button
           id="helpDijkstra"
-          className="button"
-          onClick={() => this.visualizeWalls(1)}
+          className="helpButton"
+          // onClick={() => this.callHelpScreen(0)}
+        >
+          ?
+        </button>
+        <button
+          id="helpAStar"
+          className="helpButton"
+          // onClick={() => this.callHelpScreen(1)}
+        >
+          ?
+        </button>
+        <button
+          id="helpBFS"
+          className="helpButton"
+          // onClick={() => this.callHelpScreen(2)}
+        >
+          ?
+        </button>
+        <button
+          id="helpBD"
+          className="helpButton"
+          // onClick={() => this.callHelpScreen(3)}
         >
           ?
         </button>
