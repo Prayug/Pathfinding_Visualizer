@@ -437,24 +437,6 @@ export default class PathfindingVisualizer extends Component {
 
     return (
       <>
-        <h1>Css Modal</h1>
-        <a href="#popUp" id="openPopUp">
-          Open it!
-        </a>
-
-        <aside id="popUp" class="popup">
-          <div class="popUpContainer">
-            <header>
-              <a href="#!" class="closePopUp">
-                X
-              </a>
-              <h2>Nicee!</h2>
-            </header>
-            <article></article>
-          </div>
-          <a href="#!" class="closePopUpOutSide"></a>
-        </aside>
-
         <button
           id="dijkstra-button"
           className="button"
