@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Modal from "../Modal/Modal";
+
 import Node from "./Node/Node";
 import {
   dijkstra,
@@ -520,35 +522,6 @@ export default class PathfindingVisualizer extends Component {
           </ul>
         </div>
 
-        <button
-          id="helpDijkstra"
-          className="helpButton"
-          // onClick={() => this.callHelpScreen(0)}
-        >
-          ?
-        </button>
-        <button
-          id="helpAStar"
-          className="helpButton"
-          // onClick={() => this.callHelpScreen(1)}
-        >
-          ?
-        </button>
-        <button
-          id="helpBFS"
-          className="helpButton"
-          // onClick={() => this.callHelpScreen(2)}
-        >
-          ?
-        </button>
-        <button
-          id="helpBD"
-          className="helpButton"
-          // onClick={() => this.callHelpScreen(3)}
-        >
-          ?
-        </button>
-
         <div class="mazeDropdown">
           <button class="button" id="speedDropdown">
             {" "}
@@ -577,6 +550,7 @@ export default class PathfindingVisualizer extends Component {
           {(algorithmEndTime - algorithmStartTime) / 1000} seconds
         </div>
 
+        <Modal />
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
