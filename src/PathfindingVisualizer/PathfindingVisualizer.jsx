@@ -484,7 +484,7 @@ export default class PathfindingVisualizer extends Component {
         </button>
 
         <div class="algoDropdown">
-          <button class="button" id="algoSpeedDropdown">
+          <button className="button" id="algoSpeedDropdown">
             {" "}
             Algorithm Speed
           </button>
@@ -506,6 +506,14 @@ export default class PathfindingVisualizer extends Component {
             </li>
           </ul>
         </div>
+
+        <button
+          id="helpDijkstra"
+          className="button"
+          onClick={() => this.visualizeWalls(1)}
+        >
+          ?
+        </button>
 
         <div class="mazeDropdown">
           <button class="button" id="speedDropdown">
