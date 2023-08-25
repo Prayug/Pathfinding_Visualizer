@@ -550,7 +550,6 @@ export default class PathfindingVisualizer extends Component {
           {(algorithmEndTime - algorithmStartTime) / 1000} seconds
         </div>
 
-        <Modal />
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
@@ -581,6 +580,8 @@ export default class PathfindingVisualizer extends Component {
             );
           })}
         </div>
+        <Modal />
+
       </>
     );
   }
