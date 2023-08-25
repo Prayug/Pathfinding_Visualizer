@@ -86,3 +86,7 @@ body.active-modal {
   width: 800px;
 }
 
+.modalHeader{
+  font-size: 36px;
+  font-weight: bolder;
+}

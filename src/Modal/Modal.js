@@ -50,7 +50,7 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalDijkstra} className="overlay"></div>
           <div className="modal-content">
-            <div className="modalHeader"> Dijkstra </div>
+            <div className="modalHeader"> Dijkstra's Algorithm </div>
             <div className="video-container">
               <video id="dijkstraVideo" src={dijkstraVideo} loop autoPlay />
             </div>
@@ -67,7 +67,7 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalAStar} className="overlay"></div>
           <div className="modal-content">
-            <div className="modalHeader"> A* </div>
+            <div className="modalHeader"> A* Algorithm</div>
             <div className="video-container">
               <video id="aStarVideo" src={aStarVideo} loop autoPlay />
             </div>
@@ -83,7 +83,7 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalBFS} className="overlay"></div>
           <div className="modal-content">
-            <div className="modalHeader"> Breadth First Search </div>
+            <div className="modalHeader"> Breadth First Search Algorithm</div>
             <div className="video-container">
               <video id="BFSVideo" src={BFSVideo} loop autoPlay />
             </div>
@@ -100,7 +100,10 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalBD} className="overlay"></div>
           <div className="modal-content">
-            <div className="modalHeader"> Bi-Direcional Modal </div>
+            <div className="modalHeader">
+              {" "}
+              Bi-Direcional Breadth First Algorithm{" "}
+            </div>
             <div className="video-container">
               <video
                 id="biDirectionalVideo"
