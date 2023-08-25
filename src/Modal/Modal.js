@@ -50,14 +50,14 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalDijkstra} className="overlay"></div>
           <div className="modal-content">
-            <h2>Dijkstra Modal</h2>
+            <div className="modalHeader"> Dijkstra </div>
             <div className="video-container">
-              <video id="dijkstraVideo" src={dijkstraVideo} loop autoPlay/>
-            </div>  
+              <video id="dijkstraVideo" src={dijkstraVideo} loop autoPlay />
+            </div>
             <p>Content for Dijkstra modal</p>
 
             <button className="close-modal" onClick={toggleModalDijkstra}>
-              X
+              &times;
             </button>
           </div>
         </div>
@@ -67,10 +67,10 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalAStar} className="overlay"></div>
           <div className="modal-content">
-            <h2>A* Modal</h2>
+            <div className="modalHeader"> A* </div>
             <div className="video-container">
-              <video id="aStarVideo" src={aStarVideo} loop autoPlay/>
-            </div> 
+              <video id="aStarVideo" src={aStarVideo} loop autoPlay />
+            </div>
             <p>Content for A* modal</p>
             <button className="close-modal" onClick={toggleModalAStar}>
               X
@@ -83,10 +83,10 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalBFS} className="overlay"></div>
           <div className="modal-content">
-            <h2>BFS Modal</h2>
+            <div className="modalHeader"> Breadth First Search </div>
             <div className="video-container">
-              <video id="BFSVideo" src={BFSVideo} loop autoPlay/>
-            </div> 
+              <video id="BFSVideo" src={BFSVideo} loop autoPlay />
+            </div>
             <p>Content for BFS modal</p>
 
             <button className="close-modal" onClick={toggleModalBFS}>
@@ -100,9 +100,14 @@ export default function Modal() {
         <div className="modal">
           <div onClick={toggleModalBD} className="overlay"></div>
           <div className="modal-content">
-            <h2>BD Modal</h2>
+            <div className="modalHeader"> Bi-Direcional Modal </div>
             <div className="video-container">
-              <video id="biDirectionalVideo" src={biDirectionalVideo} loop autoPlay/>
+              <video
+                id="biDirectionalVideo"
+                src={biDirectionalVideo}
+                loop
+                autoPlay
+              />
             </div>
             <p>Content for BD modal</p>
             <button className="close-modal" onClick={toggleModalBD}>
