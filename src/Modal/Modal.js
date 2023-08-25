@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import dijkstraVideo from "../helpVideos/dijkstra.mp4";
+import aStarVideo from "../helpVideos/astar.mp4";
+import BFSVideo from "../helpVideos/bfs.mp4";
+import biDirectionalVideo from "../helpVideos/biDirectional.mp4";
 
 export default function Modal() {
   const [modalDijkstra, setModalDijkstra] = useState(false);
@@ -47,7 +51,11 @@ export default function Modal() {
           <div onClick={toggleModalDijkstra} className="overlay"></div>
           <div className="modal-content">
             <h2>Dijkstra Modal</h2>
+            <div className="video-container">
+              <video id="dijkstraVideo" src={dijkstraVideo} loop autoPlay/>
+            </div>  
             <p>Content for Dijkstra modal</p>
+
             <button className="close-modal" onClick={toggleModalDijkstra}>
               X
             </button>
@@ -60,6 +68,9 @@ export default function Modal() {
           <div onClick={toggleModalAStar} className="overlay"></div>
           <div className="modal-content">
             <h2>A* Modal</h2>
+            <div className="video-container">
+              <video id="aStarVideo" src={aStarVideo} loop autoPlay/>
+            </div> 
             <p>Content for A* modal</p>
             <button className="close-modal" onClick={toggleModalAStar}>
               X
@@ -73,7 +84,11 @@ export default function Modal() {
           <div onClick={toggleModalBFS} className="overlay"></div>
           <div className="modal-content">
             <h2>BFS Modal</h2>
+            <div className="video-container">
+              <video id="BFSVideo" src={BFSVideo} loop autoPlay/>
+            </div> 
             <p>Content for BFS modal</p>
+
             <button className="close-modal" onClick={toggleModalBFS}>
               X
             </button>
@@ -86,6 +101,9 @@ export default function Modal() {
           <div onClick={toggleModalBD} className="overlay"></div>
           <div className="modal-content">
             <h2>BD Modal</h2>
+            <div className="video-container">
+              <video id="biDirectionalVideo" src={biDirectionalVideo} loop autoPlay/>
+            </div>
             <p>Content for BD modal</p>
             <button className="close-modal" onClick={toggleModalBD}>
               X
