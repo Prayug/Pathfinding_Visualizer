@@ -27,6 +27,8 @@ body.active-modal {
   border-radius: 3px;
   width: 900px;
   height: 650px;
+  border: rgb(53, 53, 53) 15px solid;
+  border-radius: 30px;
 }
 
 .close-modal {
@@ -66,17 +68,7 @@ body.active-modal {
   background-color: rgb(183, 183, 183);
 }
 
-#dijkstraVideo {
-  height: 400px;
-  width: 800px;
-}
-
-#aStarVideo {
-  height: 400px;
-  width: 800px;
-}
-
-#BFSVideo {
+.algorithmVideo {
   height: 400px;
   width: 800px;
 }

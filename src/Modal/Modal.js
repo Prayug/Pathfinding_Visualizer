@@ -51,11 +51,13 @@ export default function Modal() {
           <div onClick={toggleModalDijkstra} className="overlay"></div>
           <div className="modal-content">
             <div className="modalHeader"> Dijkstra's Algorithm </div>
-            <div className="video-container">
-              <video id="dijkstraVideo" src={dijkstraVideo} loop autoPlay />
-            </div>
-            <p>Content for Dijkstra modal</p>
-
+            <video
+              className="algorithmVideo"
+              src={dijkstraVideo}
+              loop
+              autoPlay
+            />
+            <div className="algorithmDescription"></div>
             <button className="close-modal" onClick={toggleModalDijkstra}>
               &times;
             </button>
@@ -68,9 +70,7 @@ export default function Modal() {
           <div onClick={toggleModalAStar} className="overlay"></div>
           <div className="modal-content">
             <div className="modalHeader"> A* Algorithm</div>
-            <div className="video-container">
-              <video id="aStarVideo" src={aStarVideo} loop autoPlay />
-            </div>
+            <video className="algorithmVideo" src={aStarVideo} loop autoPlay />
             <p>Content for A* modal</p>
             <button className="close-modal" onClick={toggleModalAStar}>
               X
@@ -84,9 +84,7 @@ export default function Modal() {
           <div onClick={toggleModalBFS} className="overlay"></div>
           <div className="modal-content">
             <div className="modalHeader"> Breadth First Search Algorithm</div>
-            <div className="video-container">
-              <video id="BFSVideo" src={BFSVideo} loop autoPlay />
-            </div>
+            <video className="algorithmVideo" src={BFSVideo} loop autoPlay />
             <p>Content for BFS modal</p>
 
             <button className="close-modal" onClick={toggleModalBFS}>
@@ -104,14 +102,12 @@ export default function Modal() {
               {" "}
               Bi-Direcional Breadth First Algorithm{" "}
             </div>
-            <div className="video-container">
-              <video
-                id="biDirectionalVideo"
-                src={biDirectionalVideo}
-                loop
-                autoPlay
-              />
-            </div>
+            <video
+              className="algorithmVideo"
+              src={biDirectionalVideo}
+              loop
+              autoPlay
+            />
             <p>Content for BD modal</p>
             <button className="close-modal" onClick={toggleModalBD}>
               X
