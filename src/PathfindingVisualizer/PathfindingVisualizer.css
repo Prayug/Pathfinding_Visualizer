@@ -193,9 +193,11 @@ ul {
 
 .stopwatch {
   position: absolute;
+  text-align: center;
   font-size: 18px;
   background-color: rgb(194, 194, 194);
-  padding: 12px;
+  width: 100px;
+  height: 30px;
   left: calc(50% - 15px);
   top: 70px;
   border-radius: 15px;

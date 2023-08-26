@@ -57,7 +57,12 @@ export default function Modal() {
               loop
               autoPlay
             />
-            <div className="algorithmDescription"></div>
+            <div className="algorithmDescription">
+              <u>How does it work?</u>
+              <br />
+              <br />
+              <div> Dijkstra</div>
+            </div>
             <button className="close-modal" onClick={toggleModalDijkstra}>
               &times;
             </button>
@@ -71,7 +76,9 @@ export default function Modal() {
           <div className="modal-content">
             <div className="modalHeader"> A* Algorithm</div>
             <video className="algorithmVideo" src={aStarVideo} loop autoPlay />
-            <p>Content for A* modal</p>
+            <div className="algorithmDescription">
+              <div className="howItWorks"> How does it work? </div>
+            </div>
             <button className="close-modal" onClick={toggleModalAStar}>
               X
             </button>
@@ -85,8 +92,9 @@ export default function Modal() {
           <div className="modal-content">
             <div className="modalHeader"> Breadth First Search Algorithm</div>
             <video className="algorithmVideo" src={BFSVideo} loop autoPlay />
-            <p>Content for BFS modal</p>
-
+            <div className="algorithmDescription">
+              <div className="howItWorks"> How does it work? </div>
+            </div>
             <button className="close-modal" onClick={toggleModalBFS}>
               X
             </button>
@@ -108,7 +116,9 @@ export default function Modal() {
               loop
               autoPlay
             />
-            <p>Content for BD modal</p>
+            <div className="algorithmDescription">
+              <div className="howItWorks"> How does it work? </div>
+            </div>
             <button className="close-modal" onClick={toggleModalBD}>
               X
             </button>
