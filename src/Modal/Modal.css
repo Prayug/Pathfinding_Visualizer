@@ -88,9 +88,10 @@ body.active-modal {
   font-size: 25px;
   text-align: justify;
   padding-left: 52px;
-  text-decoration: underline;
+  padding-right: 52px;
 }
 
-.algorithmDescription u {
-  text-decoration: underline;
+.algorithmDescription a {
+  font-weight: bolder;
+  color: rgb(65, 65, 65);
 }

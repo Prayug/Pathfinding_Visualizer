@@ -58,10 +58,13 @@ export default function Modal() {
               autoPlay
             />
             <div className="algorithmDescription">
-              <u>How does it work?</u>
+             <a>How does it work?</a>
               <br />
               <br />
-              <div> Dijkstra</div>
+              Dijkstra's starts with the start node, updates distances to all
+              neighbors, and repeats until the end node is reached or all nodes
+              are visited. This results in the shortest possible path between
+              the start and end nodes.
             </div>
             <button className="close-modal" onClick={toggleModalDijkstra}>
               &times;
