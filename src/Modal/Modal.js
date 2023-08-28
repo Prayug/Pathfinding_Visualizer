@@ -58,7 +58,7 @@ export default function Modal() {
               autoPlay
             />
             <div className="algorithmDescription">
-             <a>How does it work?</a>
+              <a>How does it work?</a>
               <br />
               <br />
               Dijkstra's starts with the start node, updates distances to all
@@ -80,7 +80,15 @@ export default function Modal() {
             <div className="modalHeader"> A* Algorithm</div>
             <video className="algorithmVideo" src={aStarVideo} loop autoPlay />
             <div className="algorithmDescription">
-              <div className="howItWorks"> How does it work? </div>
+              <a>How does it work?</a>
+              <br />
+              <br />
+              A* search, finds the shortest path between start and finish nodes
+              on a grid. It uses different costs (fCost, gCost, hCost) for each
+              node and iterates, updates costs, and tracks all visited nodes. It
+              finishes when the finish node is reached or when all nodes are
+              visited. This will guarantee the shortest path between the start
+              and finish nodes.
             </div>
             <button className="close-modal" onClick={toggleModalAStar}>
               X
@@ -96,7 +104,13 @@ export default function Modal() {
             <div className="modalHeader"> Breadth First Search Algorithm</div>
             <video className="algorithmVideo" src={BFSVideo} loop autoPlay />
             <div className="algorithmDescription">
-              <div className="howItWorks"> How does it work? </div>
+              <a>How does it work?</a>
+              <br />
+              <br />
+              Breadth-First Search (BFS) finds the shortest path between start
+              and finish nodes on a grid. It uses a queue to explore nodes in
+              levels, marking visited nodes and their distances. The search ends
+              when the finish node is found or the queue is empty.
             </div>
             <button className="close-modal" onClick={toggleModalBFS}>
               X
@@ -120,7 +134,14 @@ export default function Modal() {
               autoPlay
             />
             <div className="algorithmDescription">
-              <div className="howItWorks"> How does it work? </div>
+              <a>How does it work?</a>
+              <br />
+              <br />
+              Bi-directional search algorithm finds the shortest path between a
+              start and finish node on a grid. It starts from each node,
+              explores towards each other, and marks all visited nodes. If they
+              intersect, an intersection point is found, and a path will be
+              traced.
             </div>
             <button className="close-modal" onClick={toggleModalBD}>
               X
