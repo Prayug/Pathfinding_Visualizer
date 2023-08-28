@@ -1,6 +1,6 @@
 .grid {
   margin-top: 82px;
-  margin-left: 200px;
+  margin-left: 20%; /* Adjust for mobile and desktop */
 }
 
 .button {
@@ -10,7 +10,6 @@
   border-radius: 8px;
   font-family: Arial, sans-serif;
   font-weight: bold;
-  margin-left: -17px;
   font-size: 18px;
   border: 5px;
   color: white;
@@ -28,7 +27,7 @@
   font-size: 22px;
   color: white;
   background-color: rgb(146, 168, 209);
-  left: 22px;
+  left: 5%;
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -37,53 +36,53 @@
 
 #dijkstra-button {
   top: 150px;
-  left: 100px;
+  left: 10%; /* Adjust for mobile and desktop */
 }
 
 #astar-button {
   top: 250px;
-  left: 100px;
+  left: 10%; /* Adjust for mobile and desktop */
 }
 
 #bfs-button {
   top: 350px;
-  left: 100px;
+  left: 10%; /* Adjust for mobile and desktop */
 }
 
 #BiD-button {
   top: 450px;
-  left: 100px;
+  left: 10%; /* Adjust for mobile and desktop */
 }
 
 #algoSpeedDropdown {
   top: 550px;
-  left: 100px;
+  left: 10%; /* Adjust for mobile and desktop */
 }
 
 #clear-button {
   top: 7px;
-  left: calc(50%);
+  left: calc(50% - 65px); /* Adjust for mobile and desktop */
   height: 40px;
   width: 130px;
 }
 
 #clearPath-button {
   top: 7px;
-  left: calc(62.5%);
+  left: calc(62.5% - 65px); /* Adjust for mobile and desktop */
   height: 40px;
   width: 130px;
 }
 
 #simple-maze {
   top: 7px;
-  left: calc(25%);
+  left: calc(25% - 65px); /* Adjust for mobile and desktop */
   height: 40px;
   width: 130px;
 }
 
 #recursive-maze {
   top: 7px;
-  left: calc(37.5%);
+  left: calc(37.5% - 65px); /* Adjust for mobile and desktop */
   height: 40px;
   width: 130px;
 }
@@ -113,7 +112,7 @@ ul {
   position: absolute;
   display: inline-block;
   top: 7px;
-  left: calc(75%);
+  left: calc(75% - 65px); /* Adjust for mobile and desktop */
   height: 40px;
   width: 130px;
   font-size: 16px;
@@ -122,7 +121,7 @@ ul {
 #speed {
   position: absolute;
   top: 0px;
-  left: calc(75%);
+  left: calc(75% - 65px); /* Adjust for mobile and desktop */
 }
 
 .algoDropdown:hover .algoDropdown-list {
@@ -135,27 +134,25 @@ ul {
 
 .algoDropdown-list {
   position: absolute;
-
   width: 130px;
   background-color: rgb(206, 206, 206);
   border: 1px #ccc;
   border-radius: 8px;
   display: none;
   top: 534px;
-  left: 225px;
+  left: 15%; /* Adjust for mobile and desktop */
   z-index: 100;
 }
 
 .mazeDropdown-list {
   position: absolute;
-
   width: 130px;
   background-color: rgb(206, 206, 206);
   border: 1px #ccc;
   border-radius: 8px;
   display: none;
   top: -9px;
-  left: calc(82.8%);
+  left: calc(82.8% - 65px); /* Adjust for mobile and desktop */
   z-index: 100;
 }
 
@@ -197,12 +194,15 @@ ul {
 
 .stopwatch {
   position: absolute;
-  /* text-align: center; */
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 45px;
   font-size: 18px;
   background-color: rgb(194, 194, 194);
   width: 100px;
-  left: calc(50% - 60px);
-  top: 70px;
+  left: 50%;
+  top: 70px; 
+  transform: translateX(-50%); 
   border-radius: 15px;
 }
