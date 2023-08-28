@@ -17,6 +17,10 @@
   background-color: rgb(89, 185, 157);
 }
 
+.button:hover{
+  background-color: rgb(64, 165, 137);
+}
+
 .helpButton {
   position: absolute;
   font-family: Arial, sans-serif;

@@ -22,9 +22,9 @@ import "./PathfindingVisualizer.css";
 let START_NODE_ROW = 10;
 let START_NODE_COL = 15;
 let FINISH_NODE_ROW = 10;
-let FINISH_NODE_COL = 35;
+let FINISH_NODE_COL = 29;
 
-const GRID_HEIGHT = 20;
+const GRID_HEIGHT = 21;
 const GRID_LENGTH = 45;
 
 let clickedIsStart = false;
