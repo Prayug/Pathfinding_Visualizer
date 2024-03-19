@@ -17,7 +17,7 @@
   background-color: rgb(89, 185, 157);
 }
 
-.button:hover{
+.button:hover {
   background-color: rgb(64, 165, 137);
 }
 
@@ -205,7 +205,14 @@ ul {
   background-color: rgb(194, 194, 194);
   width: 100px;
   left: 50%;
-  top: 70px; 
-  transform: translateX(-50%); 
+  top: 70px;
+  transform: translateX(-50%);
   border-radius: 15px;
+}
+
+#weights {
+  top: 7px;
+  left: calc(87.5%);
+  height: 40px;
+  width: 130px;
 }

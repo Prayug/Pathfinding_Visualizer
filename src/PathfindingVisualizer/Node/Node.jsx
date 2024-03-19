@@ -13,6 +13,7 @@ export default class Node extends Component {
       onMouseEnter,
       onMouseUp,
       row,
+      weight,
     } = this.props;
     const extraClassName = isFinish
       ? "node-finish"
@@ -20,6 +21,8 @@ export default class Node extends Component {
       ? "node-start"
       : isWall
       ? "node-wall"
+      : weight
+      ? "node-weight"
       : "";
 
     return (

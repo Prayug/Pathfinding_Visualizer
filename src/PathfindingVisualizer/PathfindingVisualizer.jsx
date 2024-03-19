@@ -36,6 +36,8 @@ var stopWatchOn = false;
 let mazeCreationSpeed = 10;
 let algorithmSpeed = 10;
 
+let weightsActive = false;
+
 export default class PathfindingVisualizer extends Component {
   constructor() {
     super();
@@ -110,9 +112,10 @@ export default class PathfindingVisualizer extends Component {
     if (node.isWall && !node.isStart && !node.isFinish) {
       document.getElementById(`node-${node.row}-${node.col}`).className =
         "node node-wall";
-    } else if (!node.isStart && !node.isFinish) {
+    } else if (!node.isStart && !node.isFinish && node.weight == 0) {
       document.getElementById(`node-${node.row}-${node.col}`).className =
         "node";
+    } else if (node.weight != 0 && !node.isStart && !node.isFinish) {
     }
   }
 
@@ -121,7 +124,6 @@ export default class PathfindingVisualizer extends Component {
     var div = document.getElementById("grid");
 
     const grid = this.state.grid;
-
     var node = grid[row][col];
 
     if (clickedIsStart) {
@@ -489,7 +491,13 @@ export default class PathfindingVisualizer extends Component {
         >
           Simple Maze
         </button>
-
+        <button
+          id="weights"
+          className="button"
+          // onClick={() => this.activateWeights(!weightsActive)}
+        >
+          Weights
+        </button>
         <button
           id="recursive-maze"
           className="button"
@@ -662,6 +670,7 @@ function clearGridHelperKeepWalls(oldGrid) {
       var node = createNode(col, row);
 
       if (oldGrid[row][col].isWall) node.isWall = true;
+      node.weight = 1;
 
       if (node.isWall) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -692,6 +701,7 @@ function clearGridHelper() {
     for (let col = 0; col < GRID_LENGTH; col++) {
       var node = createNode(col, row);
       node.isWall = false;
+      node.weight = 1;
 
       if (!node.isFinish && !node.isStart) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -716,14 +726,14 @@ let getInitialGrid = () => {
   for (let row = 0; row < GRID_HEIGHT; row++) {
     const currentRow = [];
     for (let col = 0; col < GRID_LENGTH; col++) {
-      currentRow.push(createNode(col, row));
+      currentRow.push(createNode(col, row, 0));
     }
     grid.push(currentRow);
   }
   return grid;
 };
 
-let createNode = (col, row) => {
+let createNode = (col, row, weight) => {
   return {
     col,
     row,
@@ -732,6 +742,7 @@ let createNode = (col, row) => {
     distance: Infinity,
     isVisited: false,
     isWall: false,
+    weight,
     previousNode: null,
   };
 };
