@@ -123,12 +123,12 @@ export default class PathfindingVisualizer extends Component {
   }
 
   handleMouseEnter(row, col, weight) {
-    // console.log(row, col);
     if (!mouseIsPressed || isRunning) return;
     var div = document.getElementById("grid");
 
     const grid = this.state.grid;
     var node = grid[row][col];
+    console.log(node.weight);
 
     if (clickedIsStart) {
       if (node.isFinish || node.isWall) return;
@@ -166,7 +166,18 @@ export default class PathfindingVisualizer extends Component {
 
     if (node.isStart || node.isFinish) return;
 
-    if (weightsActive != true) {
+    if (weightsActive) {
+      node.isWall = !node.isWall;
+      if (node.isWall && !node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-wall";
+        node.weight = weight;
+      } else if (!node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node";
+        node.weight = 1;
+      }
+    } else {
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -175,7 +186,6 @@ export default class PathfindingVisualizer extends Component {
         document.getElementById(`node-${node.row}-${node.col}`).className =
           "node";
       }
-    } else {
     }
   }
 
@@ -676,7 +686,7 @@ function clearGridHelperKeepWalls(oldGrid) {
     const currentRow = [];
 
     for (let col = 0; col < GRID_LENGTH; col++) {
-      var node = createNode(col, row);
+      var node = createNode(col, row, 0);
 
       if (oldGrid[row][col].isWall) node.isWall = true;
       node.weight = 1;
@@ -708,7 +718,7 @@ function clearGridHelper() {
     const currentRow = [];
 
     for (let col = 0; col < GRID_LENGTH; col++) {
-      var node = createNode(col, row);
+      var node = createNode(col, row, 0);
       node.isWall = false;
       node.weight = 1;
 
