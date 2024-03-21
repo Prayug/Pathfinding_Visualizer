@@ -91,7 +91,7 @@ export default class PathfindingVisualizer extends Component {
     this.setState({ grid: newGrid });
   }
 
-  handleMouseDown(row, col) {
+  handleMouseDown(row, col, weight) {
     if (isRunning) return;
 
     const grid = this.state.grid;
@@ -108,18 +108,22 @@ export default class PathfindingVisualizer extends Component {
       clickedIsFinish = true;
       return;
     }
-    node.isWall = !node.isWall;
-    if (node.isWall && !node.isStart && !node.isFinish) {
-      document.getElementById(`node-${node.row}-${node.col}`).className =
-        "node node-wall";
-    } else if (!node.isStart && !node.isFinish && node.weight == 0) {
-      document.getElementById(`node-${node.row}-${node.col}`).className =
-        "node";
-    } else if (node.weight != 0 && !node.isStart && !node.isFinish) {
+    if (weight == 0) {
+      node.isWall = !node.isWall;
+      if (node.isWall && !node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-wall";
+      } else if (!node.isStart && !node.isFinish && node.weight == 0) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node";
+      } else if (node.weight != 0 && !node.isStart && !node.isFinish) {
+      }
+    } else {
     }
   }
 
-  handleMouseEnter(row, col) {
+  handleMouseEnter(row, col, weight) {
+    // console.log(row, col);
     if (!mouseIsPressed || isRunning) return;
     var div = document.getElementById("grid");
 
@@ -162,13 +166,16 @@ export default class PathfindingVisualizer extends Component {
 
     if (node.isStart || node.isFinish) return;
 
-    node.isWall = !node.isWall;
-    if (node.isWall && !node.isStart && !node.isFinish) {
-      document.getElementById(`node-${node.row}-${node.col}`).className =
-        "node node-wall";
-    } else if (!node.isStart && !node.isFinish) {
-      document.getElementById(`node-${node.row}-${node.col}`).className =
-        "node";
+    if (weightsActive != true) {
+      node.isWall = !node.isWall;
+      if (node.isWall && !node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-wall";
+      } else if (!node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node";
+      }
+    } else {
     }
   }
 
@@ -426,7 +433,6 @@ export default class PathfindingVisualizer extends Component {
   }
 
   arrayContainsGivenNode(array, node) {
-    if (array === []) return false;
     for (let element of array) {
       if (element.row === node.row && element.col === node.col) {
         return true;
@@ -563,7 +569,7 @@ export default class PathfindingVisualizer extends Component {
             return (
               <div key={rowIdx}>
                 {row.map((node, nodeIdx) => {
-                  let { row, col, isFinish, isStart, isWall } = node;
+                  let { row, col, isFinish, isStart, isWall, weight } = node;
 
                   return (
                     <Node
@@ -573,10 +579,13 @@ export default class PathfindingVisualizer extends Component {
                       isFinish={isFinish}
                       isStart={isStart}
                       isWall={isWall}
+                      weight={weight}
                       mouseIsPressed={mouseIsPressed}
-                      onMouseDown={(row, col) => this.handleMouseDown(row, col)}
-                      onMouseEnter={(row, col) =>
-                        this.handleMouseEnter(row, col)
+                      onMouseDown={(row, col, weight) =>
+                        this.handleMouseDown(row, col, weight)
+                      }
+                      onMouseEnter={(row, col, weight) =>
+                        this.handleMouseEnter(row, col, weight)
                       }
                       onMouseUp={() => this.handleMouseUp()}
                       clickedIsStart={clickedIsStart}
