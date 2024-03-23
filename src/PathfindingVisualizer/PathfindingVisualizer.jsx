@@ -128,7 +128,6 @@ export default class PathfindingVisualizer extends Component {
 
     const grid = this.state.grid;
     var node = grid[row][col];
-    console.log(node.weight);
 
     if (clickedIsStart) {
       if (node.isFinish || node.isWall) return;
