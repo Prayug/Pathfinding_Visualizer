@@ -166,6 +166,7 @@ export default class PathfindingVisualizer extends Component {
     if (node.isStart || node.isFinish) return;
 
     if (weightsActive) {
+      console.log(node.weight);
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -509,7 +510,7 @@ export default class PathfindingVisualizer extends Component {
         <button
           id="weights"
           className="button"
-          // onClick={() => this.activateWeights(!weightsActive)}
+          onClick={() => weightsActive(prevState => !prevState)}
         >
           Weights
         </button>
