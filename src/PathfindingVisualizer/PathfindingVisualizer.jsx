@@ -47,6 +47,7 @@ export default class PathfindingVisualizer extends Component {
       algorithmStartTime: null,
       algorithmEndTime: null,
       stopwatchInterval: null,
+      weightsActive: false,
     };
   }
 
@@ -165,8 +166,9 @@ export default class PathfindingVisualizer extends Component {
 
     if (node.isStart || node.isFinish) return;
 
-    if (weightsActive) {
-      console.log(node.weight);
+    console.log(this.state.weightsActive);
+    if (this.state.weightsActive) {
+      console.log("here rn");
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -178,6 +180,7 @@ export default class PathfindingVisualizer extends Component {
         node.weight = 1;
       }
     } else {
+      console.log("here instead");
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -452,10 +455,10 @@ export default class PathfindingVisualizer extends Component {
   }
 
   toggleWeights = () => {
-    this.setState(prevState => ({
-      weightsActive: !prevState.weightsActive
+    this.setState((prevState) => ({
+      weightsActive: !prevState.weightsActive,
     }));
-  }
+  };
 
   render() {
     const { grid, mouseIsPressed, algorithmStartTime, algorithmEndTime } =
