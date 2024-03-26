@@ -451,6 +451,12 @@ export default class PathfindingVisualizer extends Component {
     return false;
   }
 
+  toggleWeights = () => {
+    this.setState(prevState => ({
+      weightsActive: !prevState.weightsActive
+    }));
+  }
+
   render() {
     const { grid, mouseIsPressed, algorithmStartTime, algorithmEndTime } =
       this.state;
@@ -510,7 +516,7 @@ export default class PathfindingVisualizer extends Component {
         <button
           id="weights"
           className="button"
-          onClick={() => weightsActive(prevState => !prevState)}
+          onClick={() => this.toggleWeights()}
         >
           Weights
         </button>
