@@ -21,8 +21,11 @@ function sortNodesByDistance(unvisitedNodes) {
 function updateUnvisitedNeighbors(node, grid) {
   const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
   for (const neighbor of unvisitedNeighbors) {
-    neighbor.distance = node.distance + 1;
-    neighbor.previousNode = node;
+    const newDistance = node.distance + neighbor.weight;
+    if (newDistance < neighbor.distance) {
+      neighbor.distance = newDistance;
+      neighbor.previousNode = node;
+    }
   }
 }
 

@@ -109,23 +109,31 @@ export default class PathfindingVisualizer extends Component {
       clickedIsFinish = true;
       return;
     }
-    if (weight == 0) {
+    if (weightsActive) {
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
           "node node-wall";
-      } else if (!node.isStart && !node.isFinish && node.weight == 0) {
+        node.weight = weight;
+      } else if (!node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
           "node";
-      } else if (node.weight != 0 && !node.isStart && !node.isFinish) {
+        node.weight = 1;
       }
     } else {
+      node.isWall = !node.isWall;
+      if (node.isWall && !node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-wall";
+      } else if (!node.isStart && !node.isFinish) {
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node";
+      }
     }
   }
 
   handleMouseEnter(row, col, weight) {
     if (!mouseIsPressed || isRunning) return;
-    var div = document.getElementById("grid");
 
     const grid = this.state.grid;
     var node = grid[row][col];
@@ -166,9 +174,7 @@ export default class PathfindingVisualizer extends Component {
 
     if (node.isStart || node.isFinish) return;
 
-    console.log(this.state.weightsActive);
-    if (this.state.weightsActive) {
-      console.log("here rn");
+    if (weightsActive) {
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
@@ -180,7 +186,6 @@ export default class PathfindingVisualizer extends Component {
         node.weight = 1;
       }
     } else {
-      console.log("here instead");
       node.isWall = !node.isWall;
       if (node.isWall && !node.isStart && !node.isFinish) {
         document.getElementById(`node-${node.row}-${node.col}`).className =
